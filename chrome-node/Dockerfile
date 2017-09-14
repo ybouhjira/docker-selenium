@@ -14,6 +14,12 @@ RUN mkdir /app && \
     unzip chromedriver_linux64.zip && \
     mv chromedriver /usr/bin && \ 
     chmod +x /usr/bin/chromedriver
+
 EXPOSE 5555
-CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar -role node -hub http://selenium-hub:4444/grid/register -browser browserName=chrome,maxInstances=$MAX_INSTANCES,maxSession=$MAX_SESSIONS,chromeDriver=/usr/bin/chromedriver
+
+CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar \
+   -role node \
+   -maxSession $MAX_SESSION \
+   -hub http://selenium-hub:4444/grid/register \
+   -browser browserName=chrome,maxInstances=$MAX_INSTANCES
 
