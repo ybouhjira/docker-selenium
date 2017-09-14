@@ -6,6 +6,9 @@ selenium-hub:
     image: ybouhjira/selenium-hub
     ports:
         - "8000:4444"
+    environment:
+        - "TIMEOUT=120"
+        - "CLEAN_UP_CYCLE=120"
 firefox-node:
     restart: always
     image: ybouhjira/selenium-firefox-node

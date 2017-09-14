@@ -14,4 +14,4 @@ RUN mkdir /app && \
 
 EXPOSE 4444
 
-CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar -role hub
+CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar -role hub -debug -timeout $TIMEOUT -cleanUpCycle $CLEAN_UP_CYCLE
