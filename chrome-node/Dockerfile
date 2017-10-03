@@ -9,7 +9,7 @@ RUN mkdir /app && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \ 
     apt-get update && \
     apt-get install google-chrome-stable -y && \
-    wget http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar  && \ 
+    wget https://goo.gl/21wWg8  && \ 
     wget https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip && \  
     unzip chromedriver_linux64.zip && \
     mv chromedriver /usr/bin && \ 
@@ -17,7 +17,9 @@ RUN mkdir /app && \
 
 EXPOSE 5555
 
-CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar \
+RUN mv /app/21wWg8 /app/selenium-server-standalone-3.6.0.jar
+
+CMD cd /app && java -jar selenium-server-standalone-3.6.0.jar \
    -role node \
    -maxSession $MAX_SESSION \
    -hub http://selenium-hub:4444/grid/register \

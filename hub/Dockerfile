@@ -5,7 +5,7 @@ RUN mkdir /app && \
     cd /app && \ 
     apt-get update && \
     apt-get install wget unzip openjdk-8-jre -y && \
-    wget http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar && \
+    wget https://goo.gl/21wWg8 && \
     wget https://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \
     mv chromedriver /usr/bin && \
@@ -13,5 +13,5 @@ RUN mkdir /app && \
     apt-get autoremove
 
 EXPOSE 4444
-
-CMD cd /app && java -jar selenium-server-standalone-3.5.3.jar -role hub -debug -timeout $TIMEOUT -cleanUpCycle $CLEAN_UP_CYCLE
+RUN mv /app/21wWg8 /app/selenium-server-standalone-3.6.0.jar
+CMD cd /app && java -jar selenium-server-standalone-3.6.0.jar -role hub
